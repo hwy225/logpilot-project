@@ -3,7 +3,7 @@
 This document defines the key performance indicators (KPIs) and data quality metrics 
 used in the construction project analytics system.
 
----
+
 
 ## 🧮 1. Core Performance KPIs
 
@@ -15,17 +15,17 @@ used in the construction project analytics system.
 | **Max Time Deviation** | Max delay (or ahead) vs schedule | mean(`time_deviation`) | % | time_deviation | `df['time_deviation'].max()` |
 | **Equipment utilization** | Average utilization of machinery | mean(`equipment_utilization_rate`) | % | equipment_utilization_rate | `df['equipment_utilization_rate'].mean()` |
 | **Energy / Worker Intensity** | Total energy use per worker | `energy_consumption` / `worker_count` | kWh/worker | energy_consumption, worker_count | `df['energy_consumption'] / df['worker_count']` |
-| **Task progress velocity** | Change in task_progress over time | Δ(`task_progress`) / Δ(`timestamp`) | % per day | Daily | task_progress, timestamp | `df['task_progress'].diff() / df['timestamp'].diff().dt.days` |
+| **Task progress velocity** | Change in task_progress over time | Δ(`task_progress`) | % per day/week | task_progress | `df['task_progress_last'] - df['task_progress_first']` |
 
 
----
+
 
 ## 🧰 2. Data Health Metrics
 
 | Metric | Definition | Formula / Logic |
 |:---|:---|:---|
-| **missing_ratio** | Fraction of missing values per column | `df.isna().mean()` |
-| **outlier_ratio** | Fraction of values beyond 3σ | count(|x-μ|>3σ)/n |
+| **missing_ratio** | Fraction of missing values per column | `df.isna().sum().sum() / df.size` |
+| **outlier_ratio** | Fraction of values beyond 3σ | count($|x-μ|>3σ$)/n |
 | **gap_ratio** | Gaps larger than expected in timestamp sequence | Δtimestamp > expected_interval |
 | **invalid_ratio** | Negative or unrealistic values (e.g. worker_count < 0) | Boolean flag |
 | **data_health_index** | Composite index of data quality | 100 - (weighted sum of above error rates) |
