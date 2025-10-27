@@ -8,7 +8,7 @@ used in the construction project analytics system.
 ## 🧮 1. Core Performance KPIs
 
 | KPI Name | Definition | Formula / Logic | Unit | Source Columns | Example Python Snippet |
-|-----------|-------------|----------------|-------|-------------|----------------|-----------------------------|
+|:---|:---|:---|:---|:---|:---|
 | **Average Cost Deviation** | Average deviation from planned cost | mean(`cost_deviation`) | % | cost_deviation | `df['cost_deviation'].mean()` |
 | **Max Cost Deviation** | Max deviation from planned cost | mean(`cost_deviation`) | % | cost_deviation | `df['cost_deviation'].max()` |
 | **Average Time Deviation** | Average delay (or ahead) vs schedule | mean(`time_deviation`) | % | time_deviation | `df['time_deviation'].mean()` |
@@ -23,7 +23,7 @@ used in the construction project analytics system.
 ## 🧰 2. Data Health Metrics
 
 | Metric | Definition | Formula / Logic |
-|---------|-------------|----------------|--------------------|
+|:---|:---|:---|
 | **missing_ratio** | Fraction of missing values per column | `df.isna().mean()` |
 | **outlier_ratio** | Fraction of values beyond 3σ | count(|x-μ|>3σ)/n |
 | **gap_ratio** | Gaps larger than expected in timestamp sequence | Δtimestamp > expected_interval |
