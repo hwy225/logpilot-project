@@ -9,13 +9,13 @@ used in the construction project analytics system.
 
 | KPI Name | Definition | Formula / Logic | Unit | Source Columns | Example Python Snippet |
 |:---|:---|:---|:---|:---|:---|
-| **Average Cost Deviation** | Average deviation from planned cost | mean(`cost_deviation`) | % | cost_deviation | `df['cost_deviation'].mean()` |
-| **Max Cost Deviation** | Max deviation from planned cost | mean(`cost_deviation`) | % | cost_deviation | `df['cost_deviation'].max()` |
-| **Average Time Deviation** | Average delay (or ahead) vs schedule | mean(`time_deviation`) | % | time_deviation | `df['time_deviation'].mean()` |
-| **Max Time Deviation** | Max delay (or ahead) vs schedule | mean(`time_deviation`) | % | time_deviation | `df['time_deviation'].max()` |
+| **Average Cost Deviation** | Average deviation from planned cost | mean(`cost_deviation`) | USD | cost_deviation | `df['cost_deviation'].mean()` |
+| **Max Cost Deviation** | Max deviation from planned cost | mean(`cost_deviation`) | USD | cost_deviation | `df['cost_deviation'].max()` |
+| **Average Time Deviation** | Average delay (or ahead) vs schedule | mean(`time_deviation`) | days | time_deviation | `df['time_deviation'].mean()` |
+| **Max Time Deviation** | Max delay (or ahead) vs schedule | mean(`time_deviation`) | days | time_deviation | `df['time_deviation'].max()` |
 | **Equipment utilization** | Average utilization of machinery | mean(`equipment_utilization_rate`) | % | equipment_utilization_rate | `df['equipment_utilization_rate'].mean()` |
 | **Energy / Worker Intensity** | Total energy use per worker | `energy_consumption` / `worker_count` | kWh/worker | energy_consumption, worker_count | `df['energy_consumption'] / df['worker_count']` |
-| **Task progress velocity** | Change in task_progress over time | Δ(`task_progress`) | % per day/week | task_progress | `df['task_progress_last'] - df['task_progress_first']` |
+| **Task progress velocity** | Change in task_progress over time | Δ(`task_progress`) | % | task_progress | `df['task_progress_last'] - df['task_progress_first']` |
 
 
 
