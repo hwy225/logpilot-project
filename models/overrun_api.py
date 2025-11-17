@@ -39,7 +39,22 @@ class OverrunPredictor:
         Args:
             model_dir: Directory containing the .pkl model files
         """
-        self.model_dir = Path(model_dir)
+        # Handle relative paths - check if model_dir is relative and make it absolute
+        model_path = Path(model_dir)
+        if not model_path.is_absolute():
+            # If running from models/ directory, use relative path
+            # If running from project root, use models/saved_models
+            if model_path.exists():
+                self.model_dir = model_path
+            elif (Path(__file__).parent / model_dir).exists():
+                # Running from somewhere else, use path relative to this file
+                self.model_dir = Path(__file__).parent / model_dir
+            else:
+                # Try from project root
+                self.model_dir = Path.cwd() / 'models' / model_dir
+        else:
+            self.model_dir = model_path
+            
         self.models_loaded = False
         
         # Model containers
@@ -514,7 +529,7 @@ if __name__ == "__main__":
     print("OVERRUN WATCH API - EXAMPLE USAGE")
     print("=" * 80 + "\n")
     
-    # Initialize predictor
+    # Initialize predictor (will auto-detect correct path)
     predictor = OverrunPredictor(model_dir='saved_models')
     
     print("\n" + "-" * 80)
@@ -523,7 +538,23 @@ if __name__ == "__main__":
     
     # Load test data to get example features
     try:
-        with open('../models/prepared_data/modeling_datasets.pkl', 'rb') as f:
+        # Try to find the data file - check multiple possible locations
+        data_paths = [
+            Path('prepared_data/modeling_datasets.pkl'),  # From models/ dir
+            Path('models/prepared_data/modeling_datasets.pkl'),  # From project root
+            Path(__file__).parent / 'prepared_data/modeling_datasets.pkl'  # Relative to this file
+        ]
+        
+        data_file = None
+        for path in data_paths:
+            if path.exists():
+                data_file = path
+                break
+        
+        if data_file is None:
+            raise FileNotFoundError("modeling_datasets.pkl not found")
+            
+        with open(data_file, 'rb') as f:
             datasets = pickle.load(f)
         
         # Get one test sample for TIME prediction

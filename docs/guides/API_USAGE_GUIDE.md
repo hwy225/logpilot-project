@@ -6,7 +6,9 @@
 from models.overrun_api import OverrunPredictor
 
 # Initialize predictor (loads all models automatically)
-predictor = OverrunPredictor(model_dir='models/saved_models')
+# The API automatically finds models whether you run from project root or models/ directory
+predictor = OverrunPredictor()  # Uses default: 'saved_models'
+# Or explicitly specify: predictor = OverrunPredictor(model_dir='models/saved_models')
 ```
 
 ## 📊 Core Features
