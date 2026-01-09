@@ -1,47 +1,45 @@
-# 🚨 Overrun Watch: Early-Warning System for Construction Projects
+# 🏗️ LogPilot: Construction Intelligence Platform
 
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-green)]()
 [![TIME Model](https://img.shields.io/badge/TIME%20AUC-0.750-blue)]()
 [![Precision@1](https://img.shields.io/badge/Precision@1-100%25-brightgreen)]()
 
-**AI-Powered Risk Detection for Construction Project Overruns**
+**AI-Powered Risk Detection for Construction Projects**
 
-*Industry-Academia Collaboration | Masters in Data Science | November 2025*
+*Industry-Academia Collaboration | Masters in Data Science | 2025*
 
 ---
 
 ## 📋 Overview
 
-**Overrun Watch** is a machine learning early-warning system that predicts which construction projects are most likely to experience time and cost overruns. By analyzing daily project telemetry, the system ranks projects by risk and enables project managers to proactively intervene before problems escalate.
+**LogPilot** is a comprehensive machine learning platform for construction project intelligence:
 
-### 🎯 Key Achievement
-Our **TIME overrun model achieves 100% Precision@1** - when it identifies a project as the highest risk, it is **ALWAYS correct**. This enables confident, data-driven prioritization of limited management resources.
+### Task 2: Overrun Watch (✅ Complete)
+Early-warning system that predicts TIME and COST overruns. Ranks projects by risk for proactive intervention.
+- **TIME Model:** 0.750 AUC, 100% Precision@1
+- **Location:** `models/` folder
+
+### Task 5: Safety Signal Board (✅ Complete)
+Leading indicators model that predicts next-day safety incident risk 24 hours in advance.
+- **Safety Model:** Recall-optimized for HSE teams
+- **Location:** `safety/` folder (separate from Task 2)
+
+### 🎯 Key Achievements
+- **Task 2:** TIME model achieves **100% Precision@1** - top-1 alert always correct
+- **Task 5:** Safety model optimized for **high recall** - don't miss high-risk days
 
 ---
 
 ## 🚀 Quick Start
 
-### 1. Installation
+### Task 2: Overrun Prediction
 
 ```bash
-# Clone repository
-git clone <repository-url>
-cd logpilot-project
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### 2. Run API Test
-
-```bash
-# Verify everything works
+# Run API test
 python test_api.py
 
 # Expected output: ✅ ALL TESTS PASSED!
 ```
-
-### 3. Make Predictions
 
 ```python
 from models.overrun_api import OverrunPredictor
@@ -57,10 +55,21 @@ result = predictor.predict_time_overrun(
 
 print(f"Prediction: {result['prediction_label']}")
 print(f"Confidence: {result['confidence_pct']}")
-print(f"Action: {result['recommendation']}")
 ```
 
-**See [API_USAGE_GUIDE.md](API_USAGE_GUIDE.md) for complete examples.**
+### Task 5: Safety Prediction
+
+```bash
+# Open the notebook
+cd safety/
+jupyter notebook safety_leading_indicators.ipynb
+
+# Run all cells to train and evaluate safety model
+```
+
+**See folder READMEs for detailed guides:**
+- Task 2: [models/README.md](models/README.md) (if exists) or [API_USAGE_GUIDE.md](docs/guides/API_USAGE_GUIDE.md)
+- Task 5: [safety/README.md](safety/README.md)
 
 ---
 
@@ -70,23 +79,51 @@ print(f"Action: {result['recommendation']}")
 logpilot-project/
 │
 ├── README.md                              # This file - START HERE
-├── FINAL_DELIVERABLE_SUMMARY.md           # 📊 Complete project overview
-├── ONE_PAGER_PROJECT_MANAGERS.md          # 📄 Business stakeholder summary
-├── NOTEBOOKS_SUMMARY.md                   # 📓 Guide to Jupyter notebooks
-├── API_USAGE_GUIDE.md                     # 💻 Complete API documentation
-├── test_api.py                            # ✅ API test suite
+├── START_HERE.md                          # Quick navigation guide
+├── test_api.py                            # ✅ Task 2 API test suite
 ├── requirements.txt                       # 📦 Python dependencies
 │
-├── data/                                  # 📂 Raw datasets
+├── data/                                  # 📂 Raw datasets (shared by both tasks)
 │   ├── construction_project_dataset.csv
 │   └── construction_project_performance_dataset.csv
 │
-├── models/                                # 🤖 Core ML code
+├── models/                                # 🤖 TASK 2: Overrun Prediction
 │   ├── EDA_corr.ipynb                    # Data prep & feature engineering
 │   ├── model_training.ipynb              # Training, evaluation, SHAP
 │   ├── overrun_api.py                    # Production API
 │   ├── saved_models/                     # 💾 Trained models (11 .pkl files)
 │   │   ├── time_stacking_model.pkl      # Best TIME model ⭐
+│   │   ├── cost_lr_model.pkl            # Best COST model
+│   │   └── ...                          # Other models + scalers
+│
+├── safety/                                # 🛡️ TASK 5: Safety Prediction (NEW!)
+│   ├── README.md                         # Quick start guide for Task 5
+│   ├── safety_leading_indicators.ipynb   # Complete analysis (12 sections)
+│   └── saved_safety_models/              # Safety model outputs (created after running)
+│       ├── [model]_safety_model.pkl     # Trained safety model
+│       ├── safety_scaler.pkl            # Feature scaler
+│       ├── model_metadata.pkl           # Metrics & feature names
+│       └── *.png                        # 5 visualization plots
+│
+├── docs/                                  # 📚 Documentation (organized by type)
+│   ├── deliverables/                     # Main project reports
+│   │   ├── FINAL_DELIVERABLE_SUMMARY.md # Task 2 complete overview
+│   │   ├── ONE_PAGER_PROJECT_MANAGERS.md # Task 2 business summary
+│   │   ├── NOTEBOOKS_SUMMARY.md         # Task 2 notebook guide
+│   │   └── TASK5_SAFETY_DELIVERABLE.md  # Task 5 complete report (NEW!)
+│   ├── guides/                           # How-to documentation
+│   │   ├── API_USAGE_GUIDE.md           # Task 2 API examples
+│   │   ├── FOLDER_GUIDE.md              # Project structure explanation
+│   │   └── ...
+│   ├── experiment_logs/                  # Technical details
+│   │   ├── Daily_Aggregation_Experiments.md
+│   │   ├── MIXED_STRATEGY_TIME_VS_COST.md
+│   │   └── ...
+│   └── reference/                        # Background information
+│       ├── task_and_strategy.md
+│       └── ...
+│
+└── analysis_plots/                        # 📊 Task 2 visualizations (13 PNG files)
 │   │   ├── cost_lr_model.pkl            # Best COST model
 │   │   ├── time_scaler.pkl              # Feature scaler (TIME)
 │   │   ├── cost_scaler.pkl              # Feature scaler (COST)
