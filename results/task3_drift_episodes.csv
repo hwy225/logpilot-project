@@ -1,0 +1,2 @@
+episode_id,start,end,duration_hours,mean_util_delta,max_anomaly_score,mean_energy_per_worker,mean_task_progress,impact_score
+0,2023-01-01 05:00:00,2023-01-01 22:00:00,17.0,0.0063954522797941725,0.6882322703219255,602.212067889915,2818.9601904478936,6.937646454064386

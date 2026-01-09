@@ -1,0 +1,19 @@
+[
+  {
+    "module": "Utilization & Progress Drift",
+    "episode_id": 0,
+    "start_time": "2023-01-01 05:00:00",
+    "end_time": "2023-01-01 22:00:00",
+    "duration_hours": 17.0,
+    "severity": "Low",
+    "impact_score": 6.937646454064386,
+    "signals": {
+      "mean_util_delta": 0.0063954522797941725,
+      "max_anomaly_score": 0.6882322703219255,
+      "mean_energy_per_worker": 602.212067889915,
+      "mean_task_progress": 2818.9601904478936
+    },
+    "reason": "Utilization drop with flat progress and/or multivariate anomaly spike.",
+    "recommended_action": "Check equipment downtime, crew allocation, material availability, and reporting accuracy."
+  }
+]
