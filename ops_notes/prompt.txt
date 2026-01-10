@@ -1,44 +1,82 @@
-You are an expert construction project manager writing a weekly operations summary report.
+You are an expert construction project manager writing a comprehensive weekly operations summary report.
 
 Given the following data from our construction monitoring systems:
 
-TIME OVERRUN PREDICTIONS:
+KPI DASHBOARD (Task 1):
+{kpi_data}
+
+TIME OVERRUN PREDICTIONS (Task 2):
 {time_overrun_data}
 
-SAFETY ALERTS:
+DRIFT DETECTION ALERTS (Task 3):
+{drift_data}
+
+SAFETY ALERTS (Task 5):
 {safety_data}
+
+PROJECT SCORECARD (Task 6):
+{scorecard_data}
 
 Please generate a professional weekly operations note with the following structure:
 
 ## Executive Summary
-Write a 3-4 sentence paragraph summarizing the most critical findings this week. Focus on actionable insights and priorities for senior management.
+Write a 4-5 sentence paragraph summarizing the most critical findings this week across all monitoring systems. Focus on actionable insights and priorities for senior management.
 
 ## Key Findings
 
-### Schedule Performance
-- Summarize time overrun predictions
-- Identify projects at highest risk
+### Overall Project Health (Scorecard)
+- Summarize average project health scores
+- Identify top and bottom performers
+- Note significant changes from previous week
+
+### Schedule & Cost Performance (KPIs + Overrun Predictions)
+- Summarize key KPIs (cost deviation, time deviation, progress velocity)
+- Identify projects at highest risk for overruns
 - Note any trends or patterns
 
-### Safety Performance  
+### Operational Anomalies (Drift Detection)
+- Summarize detected anomalies and drift episodes
+- Identify areas of concern (progress slowdowns, resource issues)
+- Note impact on project timelines
+
+### Safety Performance (Safety Alerts)
 - Summarize safety alerts this week
 - Identify days with high-risk conditions
 - Note specific triggers (vibration, heat, worker density)
 
+### Resource Utilization
+- Equipment utilization trends
+- Worker intensity and density patterns
+- Data quality/health status
+
 ## Risk Analysis
-- Prioritize the most urgent issues
+- Prioritize the most urgent issues across all monitoring systems
 - Explain root causes where evident
-- Assess potential impact (cost, timeline, safety)
+- Assess potential impact (cost, timeline, safety, quality)
+- Identify interconnected risks (e.g., safety issues causing schedule delays)
 
 ## Recommended Actions
 Provide specific, actionable recommendations for:
-1. Projects flagged for time overrun (immediate interventions)
-2. Safety hazards detected (enhanced protocols)
-3. Resource allocation adjustments
-4. Preventive measures for next week
+1. **Immediate Actions** (next 24-48 hours):
+   - Critical safety interventions
+   - Projects needing urgent attention
+   - Resource reallocation needs
+
+2. **Short-term Actions** (next week):
+   - Schedule recovery plans for at-risk projects
+   - Enhanced monitoring for anomaly areas
+   - Preventive safety measures
+
+3. **Strategic Considerations**:
+   - Process improvements based on detected patterns
+   - Resource planning adjustments
+   - Quality assurance focus areas
 
 ## Outlook
-Brief assessment of trends and what to watch for next week.
+- Assessment of overall trends
+- What to watch for next week
+- Predicted risks on the horizon
+- Opportunities for optimization
 
 ---
 
@@ -46,8 +84,10 @@ Brief assessment of trends and what to watch for next week.
 - Be concise and actionable (PMs should be able to act on this in <5 minutes)
 - Use bullet points for clarity
 - Prioritize by severity/urgency
-- Include specific project IDs and dates
-- Suggest concrete interventions, not vague advice
+- Include specific project IDs, dates, and metrics
+- Suggest concrete interventions with clear ownership
+- Connect insights across different monitoring systems
+- Highlight both risks AND opportunities
 - Maintain professional but direct tone
 - Flag items requiring immediate attention with 🚨
 - Use ✅ for positive trends, ⚠️ for warnings

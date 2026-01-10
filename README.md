@@ -28,8 +28,6 @@ The unified dashboard provides:
 - 🎯 **Quick Links** - Fast access to documentation and run commands
 - 💡 **Usage Examples** - Code snippets and demos for each task
 
-**See:** [`UNIFIED_DASHBOARD.md`](UNIFIED_DASHBOARD.md) for full documentation.
-
 ### 🎯 Core Capabilities
 
 - **Real-time KPI Monitoring** - Data quality validation + project health metrics
@@ -75,17 +73,20 @@ streamlit run app_kpis.py
 ---
 
 ### ⚠️ Task 2: Overrun Watch (Vyoma)
-**Location:** `models/`
+**Location:** `models/`, `unified_dashboard.py`
 
-Early-warning system for TIME and COST overruns:
+Early-warning system for TIME and COST overruns with **daily time-series monitoring**:
 - **TIME Model:** 0.750 AUC, **100% Precision@1** (top alert always correct)
 - **COST Model:** 0.444 AUC (experimental, directional guidance)
+- **Dashboard:** Last 15 days of KPI trends → predicts tomorrow's time overrun
 - Production API for real-time predictions
-- Ranks projects by risk for proactive intervention
 
 **Quick Start:**
 ```bash
-# Test API
+# View daily monitoring dashboard (Task 2 page)
+streamlit run unified_dashboard.py
+
+# Or test API directly
 python test_api.py
 
 # Use in code
@@ -94,7 +95,7 @@ predictor = OverrunPredictor()
 result = predictor.predict_time_overrun(features, project_id="Alpha")
 ```
 
-**Documentation:** [models/README.md](models/README.md) | [API Guide](docs/guides/API_USAGE_GUIDE.md)
+**Documentation:** [API Guide](docs/guides/API_USAGE_GUIDE.md) | [Final Deliverable](docs/deliverables/FINAL_DELIVERABLE_SUMMARY.md)
 
 ---
 
@@ -139,11 +140,15 @@ streamlit run sim/app.py
 Leading indicators for next-day safety risk (24hr advance warning):
 - **Approach:** Rule-based system (beats 9 ML approaches!)
 - **Performance:** Recall=1.00 (catches ALL high-risk days), Precision=0.80
-- **Thresholds:** Vibration > 25.16, Heat > 30°C, Density > 0.36
+- **Trained Thresholds:** Vibration > 37.13 Hz, Heat > 43.50°C, Worker Density > 91.04
+- **Deliverables:** Production notebook, HSE Daily Report Template, Interactive dashboard
 - Production API for daily risk assessment
 
 **Quick Start:**
 ```bash
+# View dashboard (Task 5 page)
+streamlit run unified_dashboard.py
+
 # Run production notebook
 jupyter notebook safety/leading_index.ipynb
 
@@ -153,7 +158,7 @@ safety = SafetyAlertSystem()
 result = safety.predict_daily_risk(date, vibration, temp, humidity, workers, equipment)
 ```
 
-**Documentation:** [safety/README.md](safety/README.md) | [HSE Report](docs/deliverables/TASK5_HSE_SAFETY_REPORT.md)
+**Documentation:** [safety/README.md](safety/README.md) | [HSE Report](docs/deliverables/TASK5_HSE_SAFETY_REPORT.md) | [HSE Template](safety/HSE_Daily_Report_Template.md)
 
 ---
 
@@ -178,10 +183,10 @@ Composite performance scoring across multiple pillars:
 ### 📝 Task 7: Weekly Ops Notes (Vyoma)
 **Location:** `ops_notes/`
 
-AI-powered weekly operations summary generator:
+AI-powered weekly operations summary generator integrating **5 tasks**:
 - **LLM:** Google Gemini for narrative generation
-- **Input:** Time overrun predictions + Safety alerts
-- **Output:** Executive summary, risk analysis, action items
+- **Integrated Tasks:** KPIs (T1), Time Overrun (T2), Drift Detection (T3), Safety (T5), Scorecard (T6)
+- **Output:** Executive summary, risk analysis, action items (all 5 systems)
 - **Target:** <2 minutes PM review time, ≥70% acceptance rate
 
 **Quick Start:**
@@ -390,12 +395,12 @@ The dataset includes time-series records:
 
 ## 🚀 Future Enhancements
 
-- [ ] Unified web dashboard combining all modules
 - [ ] Real-time data pipeline integration
-- [ ] Mobile app for field operations
+- [ ] Mobile app for field operations  
 - [ ] Multi-project portfolio view
 - [ ] Advanced LLM agents for root cause analysis
 - [ ] Automated intervention recommendations
+- [ ] Migrate Task 7 LLM from deprecated `google.generativeai` to `google.genai`
 
 ---
 

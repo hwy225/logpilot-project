@@ -155,7 +155,7 @@ def main():
         return
         return
     
-    print(f"✅ API key found: {api_key[:10]}...")
+    # print(f"✅ API key found: {api_key[:10]}...")
     
     # Define week to analyze
     week_start = '2026-01-06'
@@ -168,15 +168,23 @@ def main():
         # Create safety data
         safety_data = create_sample_safety_data(week_start, week_end)
         
+        # Load telemetry data for KPI analysis (NEW!)
+        print("\n📊 Loading telemetry data for KPI analysis...")
+        data_path = Path(__file__).parent.parent / 'data' / 'construction_project_dataset.csv'
+        telemetry_data = pd.read_csv(data_path)
+        telemetry_data['timestamp'] = pd.to_datetime(telemetry_data['timestamp'])
+        print(f"✅ Loaded {len(telemetry_data)} telemetry records")
+        
         # Initialize generator
         print("\n🤖 Initializing generator...")
         generator = WeeklyOpsNotesGenerator(gemini_api_key=api_key)
         
-        # Generate report
+        # Generate comprehensive report
         output_path = f'ops_notes/samples/week_{week_start}.md'
         report = generator.generate_weekly_report(
             projects_data=projects_data,
             safety_data=safety_data,
+            telemetry_data=telemetry_data,  # NEW: Include telemetry for KPIs
             week_start=week_start,
             week_end=week_end,
             output_path=output_path
@@ -197,6 +205,9 @@ def main():
         print(f"  - Report length: {len(report)} characters")
         print(f"  - Contains Executive Summary: {'Executive Summary' in report}")
         print(f"  - Contains Recommendations: {'Recommended Actions' in report or 'Recommendation' in report}")
+        print(f"  - Contains KPI Data: {'KPI Dashboard' in report}")
+        print(f"  - Contains Drift Data: {'Drift Detection' in report}")
+        print(f"  - Contains Scorecard: {'Scorecard' in report}")
         print(f"  - Contains Raw Data: {'Raw Data' in report}")
         
     except Exception as e:

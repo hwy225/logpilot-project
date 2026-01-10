@@ -1,13 +1,16 @@
 # Task 7: Weekly Operations Notes Generator
 
-Auto-generates weekly operations notes combining insights from Time Overrun predictions and Safety alerts using Google Gemini LLM.
+Auto-generates comprehensive weekly operations notes integrating insights from **5 tasks** (KPIs, Time Overrun, Drift Detection, Safety, Scorecard) using Google Gemini LLM.
 
 ## 🎯 Purpose
 
 Automatically draft weekly operations summaries that:
-- Highlight high-risk projects (time overrun predictions)
-- Summarize safety alerts and incidents
-- Provide actionable recommendations
+- Aggregate KPI trends across all project metrics (Task 1)
+- Highlight high-risk projects from time overrun predictions (Task 2)
+- Report anomalies and drift patterns in utilization/progress (Task 3)
+- Summarize safety alerts and incident risk levels (Task 5)
+- Include composite project performance scores (Task 6)
+- Provide actionable recommendations across all systems
 - Save PMs time (target: <2 min to review and finalize)
 
 ## 📦 Components
@@ -87,10 +90,14 @@ safety_df = pd.DataFrame({
     'equipment_count': [8, 10, 9, 11, 9]
 })
 
+# Prepare telemetry data (optional, for KPI integration)
+telemetry_df = None  # Set to DataFrame if available
+
 # Generate report
 report = generator.generate_weekly_report(
     projects_data=projects,
     safety_data=safety_df,
+    telemetry_data=telemetry_df,  # Required parameter (can be None)
     week_start='2026-01-06',
     week_end='2026-01-10',
     output_path='ops_notes/samples/week_2026_01_06.md'
