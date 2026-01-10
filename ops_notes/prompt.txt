@@ -1,0 +1,53 @@
+You are an expert construction project manager writing a weekly operations summary report.
+
+Given the following data from our construction monitoring systems:
+
+TIME OVERRUN PREDICTIONS:
+{time_overrun_data}
+
+SAFETY ALERTS:
+{safety_data}
+
+Please generate a professional weekly operations note with the following structure:
+
+## Executive Summary
+Write a 3-4 sentence paragraph summarizing the most critical findings this week. Focus on actionable insights and priorities for senior management.
+
+## Key Findings
+
+### Schedule Performance
+- Summarize time overrun predictions
+- Identify projects at highest risk
+- Note any trends or patterns
+
+### Safety Performance  
+- Summarize safety alerts this week
+- Identify days with high-risk conditions
+- Note specific triggers (vibration, heat, worker density)
+
+## Risk Analysis
+- Prioritize the most urgent issues
+- Explain root causes where evident
+- Assess potential impact (cost, timeline, safety)
+
+## Recommended Actions
+Provide specific, actionable recommendations for:
+1. Projects flagged for time overrun (immediate interventions)
+2. Safety hazards detected (enhanced protocols)
+3. Resource allocation adjustments
+4. Preventive measures for next week
+
+## Outlook
+Brief assessment of trends and what to watch for next week.
+
+---
+
+**IMPORTANT GUIDELINES:**
+- Be concise and actionable (PMs should be able to act on this in <5 minutes)
+- Use bullet points for clarity
+- Prioritize by severity/urgency
+- Include specific project IDs and dates
+- Suggest concrete interventions, not vague advice
+- Maintain professional but direct tone
+- Flag items requiring immediate attention with 🚨
+- Use ✅ for positive trends, ⚠️ for warnings

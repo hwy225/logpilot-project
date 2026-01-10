@@ -24,9 +24,15 @@ Leading indicators model that predicts next-day safety incident risk 24 hours in
 - **Safety Model:** Recall-optimized for HSE teams
 - **Location:** `safety/` folder (separate from Task 2)
 
+### Task 7: Weekly Ops Notes (✅ Complete)
+AI-powered weekly operations summary generator using LLM (Google Gemini).
+- **Auto-generates:** Executive summaries, risk analysis, action items
+- **Location:** `ops_notes/` folder
+
 ### 🎯 Key Achievements
 - **Task 2:** TIME model achieves **100% Precision@1** - top-1 alert always correct
 - **Task 5:** Safety model optimized for **high recall** - don't miss high-risk days
+- **Task 7:** AI narratives reduce PM review time to **< 2 minutes**
 
 ---
 
@@ -62,14 +68,26 @@ print(f"Confidence: {result['confidence_pct']}")
 ```bash
 # Open the notebook
 cd safety/
-jupyter notebook safety_leading_indicators.ipynb
+jupyter notebook leading_index.ipynb
 
-# Run all cells to train and evaluate safety model
+# Run all cells to see rule-based safety system
+```
+
+### Task 7: Weekly Ops Notes
+
+```bash
+# Set up Gemini API
+export GEMINI_API_KEY='your-api-key'
+# OR add to .env file: GEMINI_API_KEY=your-key
+
+# Run test
+python ops_notes/test_generator.py
 ```
 
 **See folder READMEs for detailed guides:**
 - Task 2: [models/README.md](models/README.md) (if exists) or [API_USAGE_GUIDE.md](docs/guides/API_USAGE_GUIDE.md)
 - Task 5: [safety/README.md](safety/README.md)
+- Task 7: [ops_notes/README.md](ops_notes/README.md)
 
 ---
 
@@ -96,21 +114,32 @@ logpilot-project/
 │   │   ├── cost_lr_model.pkl            # Best COST model
 │   │   └── ...                          # Other models + scalers
 │
-├── safety/                                # 🛡️ TASK 5: Safety Prediction (NEW!)
+├── safety/                                # 🛡️ TASK 5: Safety Prediction
 │   ├── README.md                         # Quick start guide for Task 5
-│   ├── safety_leading_indicators.ipynb   # Complete analysis (12 sections)
-│   └── saved_safety_models/              # Safety model outputs (created after running)
-│       ├── [model]_safety_model.pkl     # Trained safety model
-│       ├── safety_scaler.pkl            # Feature scaler
-│       ├── model_metadata.pkl           # Metrics & feature names
-│       └── *.png                        # 5 visualization plots
+│   ├── leading_index.ipynb               # Production notebook (rule-based)
+│   ├── safety_experiments.ipynb          # Experimental comparisons
+│   ├── safety_dashboard.py               # Safety Alert API
+│   └── saved_safety_models/              # Safety outputs
+│       ├── rule_based_system.json        # Thresholds & config
+│       └── *.png                         # Visualization plots
+│
+├── ops_notes/                             # 📝 TASK 7: Weekly Ops Notes (NEW!)
+│   ├── generator.py                      # Weekly report generator
+│   ├── prompt.txt                        # LLM prompt template
+│   ├── test_generator.py                 # Test/demo script
+│   ├── README.md                         # Full documentation
+│   ├── QUICKSTART.md                     # 5-minute setup guide
+│   ├── TASK7_DELIVERABLE.md              # Complete deliverable report
+│   └── samples/                          # Generated weekly reports
+│       └── week_*.md                     # Sample outputs
 │
 ├── docs/                                  # 📚 Documentation (organized by type)
 │   ├── deliverables/                     # Main project reports
 │   │   ├── FINAL_DELIVERABLE_SUMMARY.md # Task 2 complete overview
 │   │   ├── ONE_PAGER_PROJECT_MANAGERS.md # Task 2 business summary
 │   │   ├── NOTEBOOKS_SUMMARY.md         # Task 2 notebook guide
-│   │   └── TASK5_SAFETY_DELIVERABLE.md  # Task 5 complete report (NEW!)
+│   │   ├── TASK5_SAFETY_DELIVERABLE.md  # Task 5 complete report
+│   │   └── TASK5_HSE_SAFETY_REPORT.md   # Task 5 HSE technical report
 │   ├── guides/                           # How-to documentation
 │   │   ├── API_USAGE_GUIDE.md           # Task 2 API examples
 │   │   ├── FOLDER_GUIDE.md              # Project structure explanation

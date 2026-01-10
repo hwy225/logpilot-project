@@ -16,6 +16,10 @@ imbalanced-learn>=0.11.0
 # Model Interpretation
 shap>=0.42.0
 
+# LLM Integration (Task 7)
+google-generativeai>=0.3.0
+python-dotenv>=1.0.0
+
 # Jupyter
 jupyter>=1.0.0
 ipykernel>=6.25.0
