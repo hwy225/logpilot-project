@@ -14,6 +14,22 @@
 
 **LogPilot** is a comprehensive ML platform transforming construction telemetry into actionable insights. The system provides real-time KPIs, predictive risk signals, interactive simulations, and automated reporting for construction project management.
 
+### 🚀 Quick Start - Unified Dashboard
+
+**NEW!** Access all 7 tasks through a single interface:
+
+```bash
+streamlit run unified_dashboard.py
+```
+
+The unified dashboard provides:
+- 🏠 **Central Navigation Hub** - Browse all modules from one place
+- 📊 **System Overview** - Key metrics and status at a glance
+- 🎯 **Quick Links** - Fast access to documentation and run commands
+- 💡 **Usage Examples** - Code snippets and demos for each task
+
+**See:** [`UNIFIED_DASHBOARD.md`](UNIFIED_DASHBOARD.md) for full documentation.
+
 ### 🎯 Core Capabilities
 
 - **Real-time KPI Monitoring** - Data quality validation + project health metrics

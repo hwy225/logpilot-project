@@ -1,0 +1,16 @@
+{
+  "model_type": "rule_based",
+  "version": "1.0",
+  "trained_date": "2025-12-16",
+  "thresholds": {
+    "vibration_level": 37.13315645204621,
+    "heat_index": 43.504688765929686,
+    "worker_density": 91.04212124069181
+  },
+  "validation_performance": {
+    "recall": 1.0,
+    "precision": 0.8,
+    "f1_score": 0.89
+  },
+  "logic": "OR (any threshold exceeded triggers HIGH RISK alert)"
+}

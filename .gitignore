@@ -94,11 +94,11 @@ models/*.onnx
 *.weights
 
 # Large data files (optional - uncomment if needed)
-# data/*.csv
-# data/*.parquet
-# data/*.feather
-# data/raw/
-# data/processed/
+data/*.csv
+data/*.parquet
+data/*.feather
+data/raw/
+data/processed/
 
 # Logs
 *.log
